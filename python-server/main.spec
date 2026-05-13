@@ -45,5 +45,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon='../assets/icon.ico',
+    # icon='../assets/icon.ico',  # 如需图标，请确保文件存在
 )
