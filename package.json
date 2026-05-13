@@ -1,0 +1,51 @@
+{
+  "name": "face-similarity-desktop",
+  "version": "1.0.0",
+  "description": "人脸识别相似度分析工具 - 桌面版",
+  "main": "main.js",
+  "scripts": {
+    "start": "set NODE_ENV=development && electron .",
+    "start:mac": "NODE_ENV=development electron .",
+    "build:python": "pyinstaller python-server/main.spec --distpath python-server/dist --workpath python-server/build --clean",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:all": "electron-builder --mac --win"
+  },
+  "devDependencies": {
+    "electron": "^38.0.0-beta.6",
+    "electron-builder": "^24.9.1"
+  },
+  "build": {
+    "appId": "com.facesimilarity.desktop",
+    "productName": "人脸识别相似度分析",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "src/**/*",
+      "python-server/dist/**/*",
+      "python-server/models/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "python-server/dist/main-server.exe",
+        "to": "python-server/main-server.exe"
+      },
+      {
+        "from": "python-server/models",
+        "to": "python-server/models"
+      }
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true
+    }
+  }
+}

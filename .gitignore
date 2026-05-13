@@ -1,0 +1,9 @@
+node_modules/
+dist/
+build/
+*.pyc
+__pycache__/
+.python-version
+.env
+.DS_Store
+Thumbs.db
