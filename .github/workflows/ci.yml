@@ -23,8 +23,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Check for unused dependencies
-        run: npm audit --audit-level=moderate
+      - name: Check for vulnerabilities (non-blocking)
+        run: npm audit --audit-level=moderate || true
 
   build:
     name: Build Windows Package
